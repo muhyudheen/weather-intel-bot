@@ -60,6 +60,13 @@ def chat(req: ChatRequest):
     if not intent.get("is_weather"):
         return {"response": NON_WEATHER_REPLY, "weather_data": None, "query_type": None}
 
+    if intent.get("needs_location"):
+        return {
+            "response": "Sure! 🌍 Which city would you like the weather for?",
+            "weather_data": None,
+            "query_type": "needs_location",
+        }
+
     city    = intent["city"]
     country = intent["country"]
     lat     = intent["latitude"]
