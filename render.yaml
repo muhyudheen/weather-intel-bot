@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: weather-intel-bot
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false        # you enter this manually in Render dashboard
+    healthCheckPath: /

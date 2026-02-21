@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  weather-bot:
+    build: .
+    image: weather-intel-bot:latest
+    container_name: weather-intel-bot
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    restart: unless-stopped
+    volumes:
+      # persist the Open-Meteo response cache between restarts
+      - .cache:/app/.cache
